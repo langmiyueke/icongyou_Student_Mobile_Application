@@ -143,6 +143,19 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- JNDI 数据源支持（如使用 Tomcat） -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>10.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
