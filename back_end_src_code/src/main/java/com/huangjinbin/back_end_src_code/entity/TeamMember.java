@@ -8,10 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 团队成员实体：对应数据库 team_member 表（团队与用户的关联表）
+ * 团队成员实体：对应数据库 team_member_g 表（团队与用户的关联表）
  */
 @Data
-@TableName("team_member")
+@TableName("team_member_g") // 已添加_g后缀
 public class TeamMember {
     /**
      * 关联ID（主键，自增）
@@ -20,13 +20,13 @@ public class TeamMember {
     private Long id;
 
     /**
-     * 团队ID（关联 team 表主键）
+     * 团队ID（关联 team_g 表主键）
      */
     @TableField("team_id")
     private Long teamId;
 
     /**
-     * 用户ID（关联 user 表主键）
+     * 用户ID（关联 user_g 表主键）
      */
     @TableField("user_id")
     private Long userId;

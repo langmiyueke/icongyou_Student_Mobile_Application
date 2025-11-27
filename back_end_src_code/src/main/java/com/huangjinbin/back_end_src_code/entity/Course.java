@@ -8,10 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 课程实体：对应数据库 course 表（任务关联的课程）
+ * 课程实体：对应数据库 course_g 表（任务关联的课程）
  */
 @Data
-@TableName("course")
+@TableName("course_g") // 原表名course -> 新增_g后缀
 public class Course {
     /**
      * 课程ID（主键，自增）

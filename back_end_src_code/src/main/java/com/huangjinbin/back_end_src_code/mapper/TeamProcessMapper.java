@@ -12,8 +12,6 @@ public interface TeamProcessMapper {
     /**
      * 根据任务ID查询团队进度统计
      * 关联任务所属课程的团队，统计该团队的任务完成情况及整体进度
-     * @param taskId 任务ID
-     * @return 包含团队进度、总任务数、各状态任务数的Map
      */
     @Select("""
         SELECT 
@@ -27,11 +25,11 @@ public interface TeamProcessMapper {
             SUM(CASE WHEN t.start_time <= UNIX_TIMESTAMP() AND t.end_time > UNIX_TIMESTAMP() THEN 1 ELSE 0 END) AS inProgressTasks,
             -- 待处理任务数（开始时间>当前时间）
             SUM(CASE WHEN t.start_time > UNIX_TIMESTAMP() THEN 1 ELSE 0 END) AS pendingTasks
-        FROM Task t
+        FROM Task_g t  -- 原表名Task -> 改为Task_g
         -- 关联逻辑：任务->课程->团队->团队成员（确保数据属于同一团队）
-        JOIN Course c ON t.course_id = c.id
-        JOIN Team team ON c.id = team.course_id
-        JOIN Team_Member tm ON team.id = tm.team_id
+        JOIN Course_g c ON t.course_id = c.id  -- 原表名Course -> 改为Course_g
+        JOIN Team_g team ON c.id = team.course_id  -- 原表名Team -> 改为Team_g
+        JOIN Team_Member_g tm ON team.id = tm.team_id  -- 原表名Team_Member -> 改为Team_Member_g
         WHERE t.id = #{taskId}  -- 筛选当前任务关联的团队数据
         GROUP BY team.id  -- 按团队分组，确保统计的是单个团队的进度
         """)

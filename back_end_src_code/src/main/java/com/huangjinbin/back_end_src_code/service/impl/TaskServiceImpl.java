@@ -108,8 +108,7 @@ public class TaskServiceImpl implements TaskService {
         if (task == null) {
             throw new IllegalArgumentException("任务不存在，ID: " + id); // 异常会被GlobalExceptionHandler捕获并返回统一格式
         }
-        TaskDetailResponseDTO r = taskMapper.selectTaskDetailById(id);
-        return r;
+        return taskMapper.selectTaskDetailById(id);
     }
     /**
      * 新增：实现团队成员查询方法（/task/loadTeamMembers）
@@ -206,10 +205,9 @@ public class TaskServiceImpl implements TaskService {
         task.setPoints(0); // 默认为0积分
         task.setLockStatus(0); // 未锁定
         task.setTimes(-1); // 提交次数无限制
-        // 注意：若任务需关联课程，需补充courseId（根据业务场景设置）
+        // 注意：若任务需关联课程，需补充courseId（关联course_g表）
 
-        // 5. 保存到数据库
+        // 5. 保存到数据库（task_g表）
         taskMapper.insert(task);
     }
-
 }

@@ -13,6 +13,6 @@ public interface TaskSubmissionHeatMapper extends BaseMapper<TaskSubmissionHeat>
     /**
      * 根据任务ID查询热度值（用于任务列表的heat字段）
      */
-    @Select("SELECT heat_index FROM task_submission_heat WHERE task_id = #{taskId}")
+    @Select("SELECT heat_index FROM task_submission_heat_g WHERE task_id = #{taskId}")
     Integer selectHeatByTaskId(@Param("taskId") Long taskId);
 }

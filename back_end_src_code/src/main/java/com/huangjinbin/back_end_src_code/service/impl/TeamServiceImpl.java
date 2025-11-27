@@ -27,21 +27,21 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public List<TeamMemberResponseDTO> getTeamMembers(Long taskId) {
-        Task task = taskMapper.selectById(taskId);
+        Task task = taskMapper.selectById(taskId); // 查询task_g表
         if (task == null || task.getIsTeamTask() != 1) {
             throw new RuntimeException("该任务不是团队任务，无团队成员");
         }
-        return teamMemberMapper.selectTeamMembersByTaskId(taskId);
+        return teamMemberMapper.selectTeamMembersByTaskId(taskId); // 关联team_member_g表
     }
 
     @Override
     public TeamProcessResponseDTO getTeamProcess(Long taskId) {
-        Task task = taskMapper.selectById(taskId);
+        Task task = taskMapper.selectById(taskId); // 查询task_g表
         if (task == null) {
             throw new RuntimeException("任务不存在");
         }
 
-        // 从Mapper获取统计数据
+        // 从Mapper获取统计数据（关联team_g、team_member_g等表）
         Map<String, Integer> processMap = teamProcessMapper.selectTeamProcessByTaskId(taskId);
 
         // 封装到DTO

@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 
 /**
- * 任务实体：对应数据库 task 表
+ * 任务实体：对应数据库 task_g 表
  */
 @Data
-@TableName("task") // 与数据库表名完全一致
+@TableName("task_g") // 已添加_g后缀
 public class Task {
     /**
      * 任务ID（主键，自增）
@@ -21,7 +21,7 @@ public class Task {
     private Long id;
 
     /**
-     * 关联课程ID（对应 course 表主键）
+     * 关联课程ID（对应 course_g 表主键）
      */
     @TableField("course_id")
     private Long courseId;
@@ -94,6 +94,4 @@ public class Task {
     // 在Task类中添加
     @TableField("max_participants")
     private Integer maxParticipants; // 最大参与人数
-
-
 }

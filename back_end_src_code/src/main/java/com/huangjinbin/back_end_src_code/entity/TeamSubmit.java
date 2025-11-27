@@ -8,10 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 团队任务提交实体：对应数据库 team_submit 表
+ * 团队任务提交实体：对应数据库 team_submit_g 表
  */
 @Data
-@TableName("team_submit")
+@TableName("team_submit_g") // 已添加_g后缀
 public class TeamSubmit {
     /**
      * 提交ID（主键，自增）
@@ -20,19 +20,19 @@ public class TeamSubmit {
     private Long id;
 
     /**
-     * 任务ID（关联 task 表主键）
+     * 任务ID（关联 task_g 表主键）
      */
     @TableField("task_id")
     private Long taskId;
 
     /**
-     * 团队ID（关联 team 表主键）
+     * 团队ID（关联 team_g 表主键）
      */
     @TableField("team_id")
     private Long teamId;
 
     /**
-     * 提交用户ID（关联 user 表主键，提交人）
+     * 提交用户ID（关联 user_g 表主键，提交人）
      */
     @TableField("submit_user_id")
     private Long submitUserId;

@@ -8,10 +8,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 任务热度实体：对应数据库 task_submission_heat 表
+ * 任务热度实体：对应数据库 task_submission_heat_g 表
  */
 @Data
-@TableName("task_submission_heat")
+@TableName("task_submission_heat_g") // 已添加_g后缀
 public class TaskSubmissionHeat {
     /**
      * 主键ID（自增）
@@ -20,7 +20,7 @@ public class TaskSubmissionHeat {
     private Long id;
 
     /**
-     * 任务ID（关联 task 表主键）
+     * 任务ID（关联 task_g 表主键）
      */
     @TableField("task_id")
     private Long taskId;

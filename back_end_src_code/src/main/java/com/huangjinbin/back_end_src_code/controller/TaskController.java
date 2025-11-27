@@ -86,9 +86,12 @@ public class TaskController {
      * 返回对象：detailTask（任务详情）
      */
     @GetMapping("/loadDetailTask")
-    public Result loadDetailTask(@RequestParam Long id) {
+    public Result<Map<String, TaskDetailResponseDTO>> loadDetailTask(@RequestParam Long id) {
         TaskDetailResponseDTO detailTask = taskService.loadDetailTask(id);
-        return Result.success(detailTask);
+        // 包装为 {detailTask: ...} 结构
+        Map<String, TaskDetailResponseDTO> responseData = new HashMap<>();
+        responseData.put("detailTask", detailTask);
+        return Result.success(responseData);
     }
 
     /**

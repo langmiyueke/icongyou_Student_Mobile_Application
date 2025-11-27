@@ -8,16 +8,16 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@TableName("task_submit")
+@TableName("task_submit_g") // 已添加_g后缀
 public class TaskSubmit {
     @TableId(type = IdType.AUTO)
     private Long id;
 
     @TableField("task_id")
-    private Long taskId;
+    private Long taskId; // 关联 task_g 表
 
     @TableField("submitter_id")
-    private Long submitterId;
+    private Long submitterId; // 关联 user_g 表
 
     private String content;
 
