@@ -1,11 +1,12 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 // auth 模块下的登录/注册页面
 const Login = () => import(/* webpackChunkName: "login" */ '../views/auth/Login.vue')
 const Register = () => import(/* webpackChunkName: "register" */ '../views/auth/Register.vue')
-
 const Courses = () => import(/* webpackChunkName: "courses" */ '../views/courses/Courses.vue')
 const CourseDetail = () => import(/* webpackChunkName: "course-detail" */ '../views/courses/components/CourseDetail.vue')
 const TaskCenter = () => import(/* webpackChunkName: "task-center" */ '../views/courses/components/TaskCenter.vue')
+const TaskDetail = () => import(/* webpackChunkName: "task-detail" */ '../components/TaskDetail.vue')
 
 const routes = [
   {
@@ -26,7 +27,13 @@ const routes = [
   {
     path: '/courses/:id/tasks',
     name: 'course-tasks',
-    component: CourseDetail,
+    component: TaskCenter,
+    props: true
+  },
+  {
+    path: '/courses/tasks/:id',
+    name: 'course-tasks-detail',
+    component: TaskDetail,
     props: true
   },
   {
@@ -39,12 +46,8 @@ const routes = [
     name: 'register',
     component: Register
   }
-  ,
-  {
-    path: '/tasks',
-    name: 'tasks',
-    component: TaskCenter
-  }
+
+
 ]
 
 const router = createRouter({

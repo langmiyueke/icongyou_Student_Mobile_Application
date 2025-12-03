@@ -93,7 +93,7 @@ import TeamTaskPanel from "../components/TeamTaskPanel.vue";
 import PersonalTaskPanel from "../components/PersonalTaskPanel.vue";
 import ExcellentWorkPanel from "../components/ExcellentWorkPanel.vue";
 import AiChatPanel from "../components/AiChatPanel.vue";
-import { loadDetailTask } from "../api/index.js";
+import { loadDetailTask } from "../api/task.js";
 import mitt from "mitt";
 
 // 使用统一的 mitt 实例

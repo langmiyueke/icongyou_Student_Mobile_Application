@@ -97,7 +97,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getCourse } from '@/api/courses'
 import defaultImg from '@/assets/logo.png'
 import PersonalPanel from '@/views/courses/components/PersonalPanel.vue'
-import TaskCenter from '@/views/courses/components/TaskCenter.vue'
+import TaskCenter from 'D:/Code/javaweb/icongyou_student_mobile_application/front_end_src_code/src/components/TaskCenter.vue'
 import CourseMaterials from '@/views/courses/components/CourseMaterials.vue'
 
 export default {

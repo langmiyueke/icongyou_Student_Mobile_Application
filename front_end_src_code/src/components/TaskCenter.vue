@@ -123,13 +123,7 @@
           <template #header>
             <div class="card-header">
               <span>任务列表</span>
-              <el-button
-                type="primary"
-                :icon="Plus"
-                @click="goToNewTask"
-              >
-                新建任务
-              </el-button>
+  
             </div>
           </template>
 
@@ -230,7 +224,7 @@ import {
   View,
   Document,
 } from "@element-plus/icons-vue";
-import { LoadTaskList ,loadHeatData,loadDataView} from "../api/index.js";
+import { LoadTaskList ,loadHeatData,loadDataView} from "../api/task.js";
 import mitt from "mitt";
 
 const emitter = mitt();
@@ -335,12 +329,10 @@ const handleTaskClick = (row) => {
 
 const goToTaskDetail = (taskId) => {
   emitter.emit("loadDTask", taskId);
-  router.push(`/task/${taskId}`);
+  router.push(`/courses/tasks/${taskId}`);
 };
 
-const goToNewTask = () => {
-  router.push('/task/new')
-}
+
 
 
 

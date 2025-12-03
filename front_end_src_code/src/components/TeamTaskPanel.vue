@@ -152,10 +152,18 @@
           <el-button
             type="primary"
             :icon="Plus"
+            @click="openNewTaskDialog" 
             >分配任务</el-button
           >
         </div>
       </template>
+ <!-- 新增对话框区域 -->
+    <NewTask 
+      v-if="showNewTask" 
+      :visible="showNewTask"
+      :team-members="teamMembers"
+      @task-created="handleTaskCreated"
+    />
 
       <el-table
         :data="teamTasks"
@@ -227,7 +235,22 @@
 import { ref, computed, onMounted } from "vue";
 import { Plus, Edit, Check, Clock, Warning } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
-import { loadTeamMembers, loadTeamProcess } from "../api/index.js";
+import { loadTeamMembers, loadTeamProcess } from "../api/task.js";
+import NewTask from "./NewTask.vue";
+
+// 新增响应式变量
+const showNewTask = ref(false)
+
+// 控制对话框显示
+const openNewTaskDialog = () => {
+  showNewTask.value = true
+}
+
+// 处理任务创建事件
+const handleTaskCreated = (formData) => {
+  console.log('新任务数据:', formData)
+  // 此处可添加保存到后端的逻辑
+}
 
 const props = defineProps({
   taskId: {

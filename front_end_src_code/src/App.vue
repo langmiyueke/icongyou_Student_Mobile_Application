@@ -13,16 +13,13 @@ export default {
   name: 'App',
   setup () {
     onMounted(() => {
-      // 启动后直接跳转到登录页（如果当前不是登录页）
-      try {
-        const current = router.currentRoute && router.currentRoute.value && router.currentRoute.value.path
-        if (current !== '/login') {
-          router.replace('/login')
-        }
-      } catch (e) {
-        console.warn('Redirect to login failed', e)
-      }
+  if (router.currentRoute.value.name !== 'login') {
+    router.replace('/login').catch(() => {
+      // 失败时手动设置 hash 模式跳转
+      window.location.hash = '/login'
     })
+  }
+})
 
     return {}
   }

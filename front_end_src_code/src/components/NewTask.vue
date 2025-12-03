@@ -116,7 +116,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import {newTask} from '../api/index.js'
+import {newTask} from '../api/task.js'
 
 const router = useRouter()
 const taskFormRef = ref()
